@@ -1,0 +1,13 @@
+apikey.txt
+app/*
+fewnerd/*
+__pycache__/*
+models/*
+web/*
+mountain_string_tag24/*
+.env
+/train_output/*
+/trainer_output/*
+/notebooks/.*
+/notebooks/wandb*
+/notebooks/models*

@@ -1,0 +1,82 @@
+# version: '3.8'
+
+# services:
+#   wandb-local:
+#     image: wandb/local
+#     container_name: wandb-local
+#     ports:
+#       - "8080:8080"    
+#     env_file:
+#       - .env
+#     # environment:
+#     #   - WANDB_DIR=./wandb/
+#     volumes:
+#       - wandb_data:/app/wandb
+#     networks:
+#       - wandb-network
+
+#   jupyter:
+#     build: .
+#     container_name: ner-jupyter
+#     ports:
+#       - "8888:8888"
+#     volumes:
+#       - ./notebooks:/app/notebooks
+#     environment:
+#       - WANDB_API_KEY=${WANDB_API_KEY}
+
+#     command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
+#     networks:
+#       - wandb-network
+
+# networks:
+#   wandb-network:
+#     driver: bridge
+
+# volumes:
+#   wandb_data:
+#     driver: local
+
+
+version: '3.8'
+
+services:
+  wandb:
+    image: wandb/local:latest
+    container_name: wandb_server
+    ports:
+      - "8080:8080"          # проброс порта на хост (не обязательно для связи внутри Docker)
+    volumes:
+      - wandb_data:/app/wandb      # сохраняем данные между перезапусками
+    networks:
+      - ml_network
+
+  jupyter:
+    build: .
+    container_name: jupyter_ml
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/app/notebooks
+      - ./models:/app/models
+    environment:
+      - WANDB_BASE_URL=http://wandb:8080   # указываем адрес self-hosted сервера
+      # - WANDB_API_KEY=your_api_key         # либо передать ключ через .env
+    networks:
+      - ml_network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    # working_dir: /home/jupyter/notebooks
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
+
+volumes:
+  wandb_data:
+
+networks:
+  ml_network:
+    driver: bridge

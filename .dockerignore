@@ -1,0 +1,8 @@
+models/*
+fewnerd/*
+__pycache__/*
+wandb/*
+results/*
+train_output/*
+trainer_output/*
+mountain_string_tag24/*
