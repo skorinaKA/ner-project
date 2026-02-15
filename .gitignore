@@ -9,5 +9,5 @@ mountain_string_tag24/*
 /train_output/*
 /trainer_output/*
 /notebooks/.*
-/notebooks/wandb*
+/notebooks/wandb/*
 /notebooks/models*

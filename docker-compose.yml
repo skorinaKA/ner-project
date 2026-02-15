@@ -42,6 +42,7 @@ version: '3.8'
 
 services:
   wandb:
+    profiles: ["cpu", "gpu"]
     image: wandb/local:latest
     container_name: wandb_server
     ports:
@@ -51,9 +52,10 @@ services:
     networks:
       - ml_network
 
-  jupyter:
+  jupyter_gpu:
+    profiles: ["gpu"]
     build: .
-    container_name: jupyter_ml
+    container_name: jupyter_ml_gpu
     ports:
       - "8888:8888"
     volumes:
@@ -71,6 +73,23 @@ services:
             - driver: nvidia
               count: all
               capabilities: [gpu]
+    # working_dir: /home/jupyter/notebooks
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
+
+  jupyter_cpu:
+    profiles: ["cpu"]
+    build: .
+    container_name: jupyter_ml_cpu
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/app/notebooks
+      - ./models:/app/models
+    environment:
+      - WANDB_BASE_URL=http://wandb:8080   # указываем адрес self-hosted сервера
+      # - WANDB_API_KEY=your_api_key         # либо передать ключ через .env
+    networks:
+      - ml_network
     # working_dir: /home/jupyter/notebooks
     command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''
 
