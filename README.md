@@ -137,8 +137,7 @@ NER - фундамент для множества прикладных зада
 
 Схема Few-Nerd:
 
-![IMG_256](media/image2.png){width="5.760416666666667in"
-height="5.751388888888889in"}
+<img width="553" height="553" alt="image" src="https://github.com/user-attachments/assets/25364962-d1f2-4c4b-a3ec-ef4d0f3c45ad" />
 
 В рамках курсовой работы будет использован датасет Few-NERD
 
@@ -183,8 +182,9 @@ height="5.751388888888889in"}
 
 Training loss:
 
-![](media/image3.png){width="5.768055555555556in"
-height="3.297222222222222in"}
+<img width="554" height="317" alt="image" src="https://github.com/user-attachments/assets/fd37a24d-8fc0-4b7d-a135-d6e9d448f295" />
+
+
 
 График train/loss демонстрирует монотонное снижение с \~0.045 до почти
 0.000 к 14 эпохе. Это ожидаемо: модель хорошо подстраивается под
@@ -192,8 +192,8 @@ height="3.297222222222222in"}
 
 Темп обучения:
 
-![](media/image4.png){width="5.7659722222222225in"
-height="3.341666666666667in"}
+<img width="554" height="321" alt="image" src="https://github.com/user-attachments/assets/58059218-3a76-4cc3-9047-cfabe4969b31" />
+
 
 График показывает плавное снижение скорости обучения (с \~1.5e-4 до
 близкого к нулю). Это соответствует использованию планировщика и должно
@@ -202,30 +202,30 @@ height="3.341666666666667in"}
 
 Градиент:
 
-![](media/image5.png){width="5.768055555555556in"
-height="3.2868055555555555in"}
+<img width="554" height="316" alt="image" src="https://github.com/user-attachments/assets/3bf3f8c8-2078-4869-a85e-a4d32c58a752" />
+
 
 По такому графику трудно оценить ситуацию с градиентами
 
 F1:
 
-![](media/image6.png){width="5.768055555555556in"
-height="3.2868055555555555in"}
+<img width="554" height="316" alt="image" src="https://github.com/user-attachments/assets/55e9c123-dbaf-48b3-83bf-3fc199178714" />
+
 
 Полнота:
 
-![](media/image7.png){width="5.764583333333333in"
-height="3.2631944444444443in"}
+<img width="554" height="314" alt="image" src="https://github.com/user-attachments/assets/158ea1b0-7096-410c-89bf-93bdf8152c58" />
+
 
 Точность:
 
-![](media/image8.png){width="5.7659722222222225in"
-height="3.270138888888889in"}
+<img width="554" height="314" alt="image" src="https://github.com/user-attachments/assets/72c3d7cf-f587-4505-a455-a84fa42cd50f" />
+
 
 Validation loss:
 
-![](media/image9.png){width="5.768055555555556in"
-height="3.277083333333333in"}
+<img width="554" height="315" alt="image" src="https://github.com/user-attachments/assets/94311278-2dfc-47b9-9603-53cdf43907ed" />
+
 
 График train/loss демонстрирует монотонное снижение с \~0.05 до почти
 0.000 к 14 эпохе. Это ожидаемо, так как модель хорошо подстраивается под
@@ -400,21 +400,21 @@ docker-compose \--profile cpu up -d
 
 2.  Нажимаем на Generate. Это скопирует API-ключ
 
-    ![](media/image10.png){width="6.457638888888889in"
-    height="2.078472222222222in"}
+<img width="620" height="200" alt="image" src="https://github.com/user-attachments/assets/74142c80-9325-4f2a-a2f1-19bff2eefdba" />
+
 
 3.  Открываем терминал в jupyter (New-\>Terminal) и вводим:
 
-    ![](media/image11.png){width="5.768055555555556in"
-    height="3.06875in"}\
+<img width="554" height="295" alt="image" src="https://github.com/user-attachments/assets/b0bd9874-85e9-4691-a1d6-f1b1850206eb" />
+
     cd notebooks
 
     wandb login \--relogin \--host=http://wandb:8080
 
 4.  Вставляем скопированный ранее API-ключ.
 
-![](media/image12.png){width="5.768055555555556in"
-height="1.8159722222222223in"}
+<img width="554" height="175" alt="image" src="https://github.com/user-attachments/assets/dee9abf0-0ccc-487a-a7a1-44b95604e2c4" />
+
 
 ### 4.4.2 jupyter
 
@@ -425,8 +425,8 @@ height="1.8159722222222223in"}
 3.  В процессе обучения будет представлена ссылка в которой собираются
     метрики для wandb. Например:
 
-    ![](media/image13.png){width="5.7659722222222225in"
-    height="1.10625in"}
+<img width="554" height="107" alt="image" src="https://github.com/user-attachments/assets/c1ff92c9-d6a2-496c-8d74-2aa077bccd7a" />
+
 
     Важно! Если заходить с браузера, то нужно поменять в ссылке wandb на
     localhost, так как в контейнере две разные ссылки: для хоста и для
@@ -454,11 +454,11 @@ docker run -p 8000:8000 ner-app
 
 #### Пример работы приложения:
 
-![](media/image14.png){width="5.756944444444445in"
-height="3.6222222222222222in"}
+<img width="553" height="348" alt="image" src="https://github.com/user-attachments/assets/971b1bf9-b50b-4e11-9bf6-c9a78b5a2990" />
 
-![](media/image15.png){width="5.764583333333333in"
-height="4.355555555555555in"}
+
+<img width="554" height="419" alt="image" src="https://github.com/user-attachments/assets/40ed635d-bb51-4113-adea-07bcd9a71985" />
+
 
 #### Доступные api:
 
